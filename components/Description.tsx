@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Description() {
   return (
-    <div className="flex flex-col bg-stone-100  border p-16">
+    <div className="flex flex-col bg-stone-100  border p-4 sm:p-16">
       <h1 className="flex w-80 text-3xl pb-8 font-bold">
         Explore our collection of informative and engaging articles
       </h1>

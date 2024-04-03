@@ -6,6 +6,8 @@ export default function Navbar() {
       <Link className="text-black font-bold text-3xl" href={"/"}>
         Blog NextJS.
       </Link>
+
+      <p className="text-lg">A full stack nextjs blog website</p>
     </nav>
   );
 }
