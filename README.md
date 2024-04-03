@@ -1,1 +1,1 @@
-# blog-CRUD-nextjs
+# blog-fullstack-nextjs
