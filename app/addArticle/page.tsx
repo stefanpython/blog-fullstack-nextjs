@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function AddArticle() {
@@ -64,9 +65,11 @@ export default function AddArticle() {
           Submit
         </button>
 
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Cancel
-        </button>
+        <Link href="/">
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Cancel
+          </button>
+        </Link>
       </div>
     </form>
   );
