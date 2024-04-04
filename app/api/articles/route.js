@@ -9,3 +9,9 @@ export async function POST(req) {
   await Article.create({ title, content, authorName, image });
   return NextResponse.json({ message: "Article created" }, { status: 201 });
 }
+
+export async function GET(req) {
+  await connectMongoDB();
+  const articles = await Article.find();
+  return NextResponse.json({ articles });
+}
