@@ -10,7 +10,7 @@ export default function Navbar() {
       <p className="text-lg">A full stack nextjs blog website</p>
 
       <Link href="/addArticle">
-        <button className="btn border p-2 rounded-md bg-gray-300 font-medium hover:bg-gray-400">
+        <button className="btn border px-2 py-1 rounded-md bg-gray-400 text-white font-extrabold hover:bg-gray-500">
           Add post
         </button>
       </Link>
