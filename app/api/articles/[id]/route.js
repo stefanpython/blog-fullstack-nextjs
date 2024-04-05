@@ -14,3 +14,10 @@ export async function PUT(req, { params }) {
   await Article.findByIdAndUpdate(id, { title, content, authorName, image });
   return NextResponse.json({ message: "Article updated" }, { status: 200 });
 }
+
+export async function GET(req, { params }) {
+  const { id } = params;
+  await connectMongoDB();
+  const article = await Article.findOne({ _id: id });
+  return NextResponse.json({ article }, { status: 200 });
+}
