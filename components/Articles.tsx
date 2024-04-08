@@ -35,7 +35,7 @@ export default async function Articles() {
     <div className="flex flex-col items-center py-4 ">
       <h1 className="text-2xl font-medium">Popular stories</h1>
 
-      <div className="flex flex-wrap gap-10">
+      <div className="flex flex-wrap gap-10 justify-center">
         {articles.map((item: Article) => (
           <div key={item._id} className="flex  py-10 max-w-[30em]">
             <div className="flex flex-col px-1">
