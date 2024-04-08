@@ -41,7 +41,7 @@ export default async function Articles() {
         {articles.map((item: Article) => (
           <div key={item._id} className="flex  py-10 max-w-[30em]">
             <div className="flex flex-col px-1">
-              <Link href="/article/id">
+              <Link href={`/article/${item._id}`}>
                 {/* CHANGE DYNAMIC IP HERE */}
                 <Image
                   src={`/${item.image}`}
@@ -52,7 +52,7 @@ export default async function Articles() {
                 />
                 <h1 className="text-2xl py-2 hover:underline">{item.title}</h1>
               </Link>
-              <p>{item.date}2</p>
+              <p>{item.date}</p>
 
               <p className="py-5">{item.content}</p>
 
@@ -64,7 +64,7 @@ export default async function Articles() {
                 </div>
 
                 {/* CHANGE DYNAMIC IP HERE */}
-                <Link href="/editArticle/id">
+                <Link href={`/editArticle/${item._id}`}>
                   <button className="btn border px-4 py-1 bg-green-400 text-white font-bold rounded-sm">
                     Edit
                   </button>
