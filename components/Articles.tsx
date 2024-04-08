@@ -31,8 +31,6 @@ const getArticles = async () => {
 export default async function Articles() {
   const { articles } = await getArticles();
 
-  console.log(articles);
-
   return (
     <div className="flex flex-col items-center py-4 ">
       <h1 className="text-2xl font-medium">Popular stories</h1>
