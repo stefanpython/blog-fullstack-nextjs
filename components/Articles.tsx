@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FaRegUser } from "react-icons/fa";
 import Link from "next/link";
+import moment from "moment";
 
 interface Article {
   _id: string;
@@ -50,7 +51,10 @@ export default async function Articles() {
                 />
                 <h1 className="text-2xl py-2 hover:underline">{item.title}</h1>
               </Link>
-              <p>{item.date}</p>
+
+              <p className="text-gray-600">
+                {moment(item.date).format("MMMM Do YYYY, h:mm:ss a")}
+              </p>
 
               <p className="py-5">{item.content}</p>
 

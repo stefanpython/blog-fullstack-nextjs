@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaRegUser } from "react-icons/fa";
+import moment from "moment";
 
 interface Article {
   _id: string;
@@ -56,7 +57,12 @@ export default async function Article({ params }: { params: ArticleParams }) {
               priority={true}
             />
 
-            <p className="pt-4">posted on: {article.date}</p>
+            <p className="pt-4 flex text-gray-600">
+              posted on:
+              <p className="pl-2">
+                {moment(article.date).format("MMMM Do YYYY, h:mm:ss a")}
+              </p>
+            </p>
 
             <p className="py-5">{article.content}</p>
           </div>

@@ -1,9 +1,45 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AddArticle() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [authorName, setAuthorName] = useState("");
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!title || !content || !authorName) {
+      alert("Title, content and author name required.");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/api/articles/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title, content, authorName }),
+      });
+
+      if (res.ok) {
+        router.push("/");
+      } else {
+        throw new Error("Failed to create article");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form className="mx-auto mt-8 w-80 sm:w-[450px]">
+    <form onSubmit={handleSubmit} className="mx-auto mt-8 w-80 sm:w-[450px]">
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -11,10 +47,13 @@ export default function AddArticle() {
         >
           Title:
           <input
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             name="title"
             required
+            placeholder="Article title"
           />
         </label>
       </div>
@@ -26,9 +65,12 @@ export default function AddArticle() {
         >
           Content:
           <textarea
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="content"
             required
+            placeholder="Article description"
           />
         </label>
       </div>
@@ -40,9 +82,12 @@ export default function AddArticle() {
         >
           Author Name:
           <input
+            onChange={(e) => setAuthorName(e.target.value)}
+            value={authorName}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             name="authorName"
+            placeholder="Author name"
           />
         </label>
       </div>
