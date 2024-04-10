@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import UploadButtonPage from "../upload-button/page";
 
@@ -11,11 +11,9 @@ export default function AddArticle() {
   const [authorName, setAuthorName] = useState("");
   const [image, setImage] = useState("");
 
-  console.log(image);
-
   const router = useRouter();
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!title || !content || !authorName) {
@@ -111,8 +109,6 @@ export default function AddArticle() {
       </div>
        */}
 
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment
-         @ts-ignore */}
       <UploadButtonPage setImage={setImage} />
 
       <div className="mb-4 flex justify-between">
