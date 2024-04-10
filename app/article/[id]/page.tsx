@@ -57,12 +57,12 @@ export default async function Article({ params }: { params: ArticleParams }) {
               priority={true}
             />
 
-            <p className="pt-4 flex text-gray-600">
+            <div className="pt-4 flex text-gray-600">
               posted on:
               <p className="pl-2">
                 {moment(article.date).format("MMMM Do YYYY, h:mm:ss a")}
               </p>
-            </p>
+            </div>
 
             <p className="py-5">{article.content}</p>
           </div>

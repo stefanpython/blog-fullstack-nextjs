@@ -1,17 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import UploadButtonPage from "../upload-button/page";
 
 export default function AddArticle() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [authorName, setAuthorName] = useState("");
+  const [image, setImage] = useState("");
+
+  console.log(image);
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (!title || !content || !authorName) {
@@ -25,7 +29,7 @@ export default function AddArticle() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, content, authorName }),
+        body: JSON.stringify({ title, content, authorName, image }),
       });
 
       if (res.ok) {
@@ -106,6 +110,11 @@ export default function AddArticle() {
         </label>
       </div>
        */}
+
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment
+         @ts-ignore */}
+      <UploadButtonPage setImage={setImage} />
+
       <div className="mb-4 flex justify-between">
         <button
           type="submit"

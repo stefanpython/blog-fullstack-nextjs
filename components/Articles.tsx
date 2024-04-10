@@ -43,7 +43,7 @@ export default async function Articles() {
               <Link href={`/article/${item._id}`}>
                 {/* CHANGE DYNAMIC IP HERE */}
                 <Image
-                  src={`/${item.image}`}
+                  src={item.image}
                   width={500}
                   height={500}
                   alt="frog"
