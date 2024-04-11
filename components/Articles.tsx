@@ -48,6 +48,7 @@ export default async function Articles() {
                   height={500}
                   alt="frog"
                   priority={true}
+                  className="max-h-[20em]"
                 />
                 <h1 className="text-2xl py-2 hover:underline">{item.title}</h1>
               </Link>

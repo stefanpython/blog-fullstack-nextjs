@@ -7,9 +7,10 @@ import { OurFileRouter } from "../api/uploadthing/core";
 
 interface Props {
   setImage: (url: string) => void;
+  image: string;
 }
 
-export default function UploadButtonPage({ setImage }: Props) {
+export default function UploadButtonPage({ setImage, image }: Props) {
   const handleUploadComplete = (res: { url: string }[]) => {
     if (res && res.length > 0) {
       const imageUrl = res[0].url;
@@ -18,7 +19,7 @@ export default function UploadButtonPage({ setImage }: Props) {
   };
   return (
     <main
-      className="flex min-h-screen flex-col items-center justify-start p-24"
+      className="flex  flex-col items-center justify-start"
       key={Math.random()}
     >
       {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -31,6 +32,7 @@ export default function UploadButtonPage({ setImage }: Props) {
           alert(`ERROR! ${error.message}`);
         }}
       />
+      {image.length > 0 && <p>Upload Complete!</p>}
     </main>
   );
 }

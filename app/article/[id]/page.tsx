@@ -50,7 +50,7 @@ export default async function Article({ params }: { params: ArticleParams }) {
             </div>
 
             <Image
-              src={`/${article.image}`}
+              src={article.image}
               width={1200}
               height={1500}
               alt="frog"
