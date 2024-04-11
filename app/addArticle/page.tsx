@@ -41,75 +41,86 @@ export default function AddArticle() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto mt-8 w-80 sm:w-[450px]">
-      <div className="mb-4">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="title"
-        >
-          Title:
-          <input
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            name="title"
-            required
-            placeholder="Article title"
-          />
-        </label>
-      </div>
+    <>
+      <form onSubmit={handleSubmit} className="mx-auto mt-8 w-80 sm:w-[450px]">
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="title"
+          >
+            Title:
+            <input
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="title"
+              required
+              placeholder="Article title"
+            />
+          </label>
+        </div>
 
-      <div className="mb-4">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="content"
-        >
-          Content:
-          <textarea
-            onChange={(e) => setContent(e.target.value)}
-            value={content}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            name="content"
-            required
-            placeholder="Article description"
-          />
-        </label>
-      </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="content"
+          >
+            Content:
+            <textarea
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="content"
+              required
+              placeholder="Article description"
+            />
+          </label>
+        </div>
 
-      <div className="mb-4">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="authorName"
-        >
-          Author Name:
-          <input
-            onChange={(e) => setAuthorName(e.target.value)}
-            value={authorName}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            name="authorName"
-            placeholder="Author name"
-          />
-        </label>
-      </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="authorName"
+          >
+            Author Name:
+            <input
+              onChange={(e) => setAuthorName(e.target.value)}
+              value={authorName}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              name="authorName"
+              placeholder="Author name"
+            />
+          </label>
+        </div>
 
-      <UploadButtonPage setImage={setImage} image={image} />
+        <UploadButtonPage setImage={setImage} image={image} />
 
-      <div className="mb-4 flex justify-between">
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Save
-        </button>
-
-        <Link href="/">
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Cancel
+        <div className="mb-4 flex justify-between">
+          <button
+            type="submit"
+            className={`bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+              !image &&
+              "cursor-not-allowed disabled:bg-gray-400 disabled:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            }`}
+            disabled={!image}
+          >
+            Save
           </button>
-        </Link>
-      </div>
-    </form>
+
+          <Link href="/">
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Cancel
+            </button>
+          </Link>
+        </div>
+
+        <p className="pl-4 pt-2">
+          <span className="font-semibold text-lg">Note:</span> Image must be
+          uploaded before submitting form.{" "}
+        </p>
+      </form>
+    </>
   );
 }

@@ -55,6 +55,7 @@ export default async function Article({ params }: { params: ArticleParams }) {
               height={1500}
               alt="frog"
               priority={true}
+              className="rounded-md"
             />
 
             <div className="pt-4 flex text-gray-600">
