@@ -3,6 +3,8 @@ import Image from "next/image";
 import { FaRegUser } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
+import { HiPencilAlt } from "react-icons/hi";
+import { HiOutlineTrash } from "react-icons/hi";
 
 interface Article {
   _id: string;
@@ -41,7 +43,6 @@ export default async function Articles() {
           <div key={item._id} className="flex  py-10 max-w-[30em]">
             <div className="flex flex-col px-1">
               <Link href={`/article/${item._id}`}>
-                {/* CHANGE DYNAMIC IP HERE */}
                 <Image
                   src={item.image}
                   width={500}
@@ -66,12 +67,16 @@ export default async function Articles() {
                   <p>{item.authorName}</p>
                 </div>
 
-                {/* CHANGE DYNAMIC IP HERE */}
-                <Link href={`/editArticle/${item._id}`}>
-                  <button className="btn border px-4 py-1 bg-green-400 text-white font-bold rounded-sm">
-                    Edit
-                  </button>
-                </Link>
+                <div className="flex items-center">
+                  <Link href={`/editArticle/${item._id}`}>
+                    <HiPencilAlt size={40} />
+                  </Link>
+
+                  <br />
+                  <br />
+
+                  <HiOutlineTrash size={40} className="text-red-400" />
+                </div>
               </div>
             </div>
           </div>
