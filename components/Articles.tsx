@@ -4,7 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import Link from "next/link";
 import moment from "moment";
 import { HiPencilAlt } from "react-icons/hi";
-import { HiOutlineTrash } from "react-icons/hi";
+import RemoveButton from "./RemoveButton";
 
 interface Article {
   _id: string;
@@ -68,14 +68,17 @@ export default async function Articles() {
                 </div>
 
                 <div className="flex items-center">
-                  <Link href={`/editArticle/${item._id}`}>
+                  <Link
+                    href={`/editArticle/${item._id}`}
+                    className="hover:bg-gray-200"
+                  >
                     <HiPencilAlt size={40} />
                   </Link>
 
                   <br />
                   <br />
 
-                  <HiOutlineTrash size={40} className="text-red-400" />
+                  <RemoveButton id={item._id} />
                 </div>
               </div>
             </div>
