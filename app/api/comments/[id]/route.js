@@ -10,3 +10,11 @@ export async function POST(req) {
   await Comment.create({ user, content, postId });
   return NextResponse.json({ message: "Comment created" }, { status: 201 });
 }
+
+export async function GET(req, { params }) {
+  const { id } = params;
+
+  await connectMongoDB();
+  const comments = await Comment.find({ postId: id });
+  return NextResponse.json({ comments }, { status: 200 });
+}
