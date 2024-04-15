@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FaRegUser } from "react-icons/fa";
 import moment from "moment";
+import Comments from "@/components/Comments";
 
 interface Article {
   _id: string;
@@ -66,6 +67,14 @@ export default async function Article({ params }: { params: ArticleParams }) {
             </div>
 
             <p className="py-5">{article.content}</p>
+
+            <div className="comments mx-auto flex flex-col items-center w-full">
+              <h1 className="font-bold text-xl py-3 mb-6">Comments</h1>
+
+              <Comments />
+
+              <hr className="mt-10" />
+            </div>
           </div>
         </div>
       </div>
