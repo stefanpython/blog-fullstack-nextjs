@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaRegUser } from "react-icons/fa";
 import moment from "moment";
 import Comments from "@/components/Comments";
+import DeleteCommentsButton from "@/components/DeleteCommentsButton";
 
 interface Article {
   _id: string;
@@ -102,12 +103,19 @@ export default async function Article({ params }: { params: ArticleParams }) {
 
             <div>
               {comments.map((comment: Comment) => (
-                <div key={comment._id} className="border p-4 rounded-lg mb-4">
-                  <p className="font-bold">{comment.user}</p>
-                  <p className="text-xs text-gray-500 mb-1">
-                    {new Date(comment.date).toLocaleString()}
-                  </p>
-                  <p>{comment.content}</p>
+                <div
+                  key={comment._id}
+                  className="border p-4 rounded-lg mb-4 flex justify-between"
+                >
+                  <div>
+                    <p className="font-bold">{comment.user}</p>
+                    <p className="text-xs text-gray-500 mb-1">
+                      {new Date(comment.date).toLocaleString()}
+                    </p>
+                    <p>{comment.content}</p>
+                  </div>
+
+                  <DeleteCommentsButton id={comment._id} />
                 </div>
               ))}
             </div>
