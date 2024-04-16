@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FormEvent, FormEventHandler, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 interface CommentProp {

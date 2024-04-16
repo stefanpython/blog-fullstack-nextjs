@@ -17,6 +17,13 @@ interface ArticleParams {
   id: string;
 }
 
+interface Comment {
+  _id: string;
+  user: string;
+  date: string;
+  content: string;
+}
+
 const getArticleById = async (id: string) => {
   try {
     const res = await fetch(`http://localhost:3000/api/articles/${id}`, {
@@ -33,9 +40,26 @@ const getArticleById = async (id: string) => {
   }
 };
 
+const getCommentsById = async (id: string) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/comments/${id}`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch comments");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Error loading topics comments", error);
+  }
+};
+
 export default async function Article({ params }: { params: ArticleParams }) {
   const { id } = params;
   const { article } = await getArticleById(id);
+  const { comments } = await getCommentsById(id);
 
   return (
     <div className="flex flex-col items-center py-4 ">
@@ -74,6 +98,18 @@ export default async function Article({ params }: { params: ArticleParams }) {
               <Comments postId={article._id} />
 
               <hr className="mt-10" />
+            </div>
+
+            <div>
+              {comments.map((comment: Comment) => (
+                <div key={comment._id} className="border p-4 rounded-lg mb-4">
+                  <p className="font-bold">{comment.user}</p>
+                  <p className="text-xs text-gray-500 mb-1">
+                    {new Date(comment.date).toLocaleString()}
+                  </p>
+                  <p>{comment.content}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
