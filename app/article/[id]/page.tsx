@@ -71,7 +71,7 @@ export default async function Article({ params }: { params: ArticleParams }) {
             <div className="comments mx-auto flex flex-col items-center w-full">
               <h1 className="font-bold text-xl py-3 mb-6">Comments</h1>
 
-              <Comments />
+              <Comments postId={article._id} />
 
               <hr className="mt-10" />
             </div>
