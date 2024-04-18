@@ -15,6 +15,22 @@ interface Article {
   image: string;
 }
 
+const getUser = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/user", {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch articles");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Error loading topics articles", error);
+  }
+};
+
 const getArticles = async () => {
   try {
     const res = await fetch("http://localhost:3000/api/articles", {
@@ -33,7 +49,9 @@ const getArticles = async () => {
 
 export default async function Articles() {
   const { articles } = await getArticles();
+  const { admin } = await getUser();
 
+  console.log(admin[0].email);
   return (
     <div className="flex flex-col items-center py-4 ">
       <h1 className="text-2xl font-medium">Popular stories</h1>
