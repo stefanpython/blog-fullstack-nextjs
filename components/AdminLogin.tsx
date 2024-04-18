@@ -56,9 +56,11 @@ export default function AdminLogin() {
             Login
           </button>
 
-          <div className="bg-red-400 text-white w-fit text-sm py-1 px-3 rounded-sm mt-2">
-            Error message
-          </div>
+          {error && (
+            <div className="bg-red-400 text-white w-fit text-sm py-1 px-3 rounded-sm mt-2">
+              {error}
+            </div>
+          )}
         </form>
       </div>
     </div>
