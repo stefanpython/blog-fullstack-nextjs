@@ -34,7 +34,7 @@ export default function AdminLogin() {
   return (
     <div className="grid place-items-center mt-10 sm:mt-72">
       <div className="shadow-lg p-5 rounded-lg border-t-4 border-t-indigo-600 py-10">
-        <h1 className="text-xl font-col gap-3 pb-2">Enter login details</h1>
+        <h1 className="text-xl font-col gap-3 pb-4">Welcome back Admin</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 ">
           <input
