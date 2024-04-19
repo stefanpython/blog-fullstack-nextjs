@@ -5,6 +5,7 @@ import Link from "next/link";
 import moment from "moment";
 import { HiPencilAlt } from "react-icons/hi";
 import RemoveButton from "./RemoveButton";
+import { getServerSession } from "next-auth";
 
 interface Article {
   _id: string;
@@ -14,22 +15,6 @@ interface Article {
   authorName: string;
   image: string;
 }
-
-const getUser = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/api/user", {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch articles");
-    }
-
-    return res.json();
-  } catch (error) {
-    console.error("Error loading topics articles", error);
-  }
-};
 
 const getArticles = async () => {
   try {
@@ -49,9 +34,9 @@ const getArticles = async () => {
 
 export default async function Articles() {
   const { articles } = await getArticles();
-  const { admin } = await getUser();
 
-  console.log(admin[0].email);
+  const session = await getServerSession();
+
   return (
     <div className="flex flex-col items-center py-4 ">
       <h1 className="text-2xl font-medium">Popular stories</h1>
@@ -85,19 +70,21 @@ export default async function Articles() {
                   <p>{item.authorName}</p>
                 </div>
 
-                <div className="flex items-center">
-                  <Link
-                    href={`/editArticle/${item._id}`}
-                    className="hover:bg-gray-200"
-                  >
-                    <HiPencilAlt size={40} />
-                  </Link>
+                {session?.user?.email && (
+                  <div className="flex items-center">
+                    <Link
+                      href={`/editArticle/${item._id}`}
+                      className="hover:bg-gray-200"
+                    >
+                      <HiPencilAlt size={40} />
+                    </Link>
 
-                  <br />
-                  <br />
+                    <br />
+                    <br />
 
-                  <RemoveButton id={item._id} />
-                </div>
+                    <RemoveButton id={item._id} />
+                  </div>
+                )}
               </div>
             </div>
           </div>

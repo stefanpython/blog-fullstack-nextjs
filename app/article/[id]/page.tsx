@@ -102,22 +102,25 @@ export default async function Article({ params }: { params: ArticleParams }) {
             </div>
 
             <div>
-              {comments.map((comment: Comment) => (
-                <div
-                  key={comment._id}
-                  className="border p-4 rounded-lg mb-4 flex justify-between"
-                >
-                  <div>
-                    <p className="font-bold">{comment.user}</p>
-                    <p className="text-xs text-gray-500 mb-1">
-                      {new Date(comment.date).toLocaleString()}
-                    </p>
-                    <p>{comment.content}</p>
-                  </div>
+              {comments
+                .slice()
+                .reverse()
+                .map((comment: Comment) => (
+                  <div
+                    key={comment._id}
+                    className="border p-4 rounded-lg mb-4 flex justify-between"
+                  >
+                    <div>
+                      <p className="font-bold">{comment.user}</p>
+                      <p className="text-xs text-gray-500 mb-1">
+                        {new Date(comment.date).toLocaleString()}
+                      </p>
+                      <p>{comment.content}</p>
+                    </div>
 
-                  <DeleteCommentsButton id={comment._id} />
-                </div>
-              ))}
+                    <DeleteCommentsButton id={comment._id} />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
