@@ -4,6 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import moment from "moment";
 import Comments from "@/components/Comments";
 import DeleteCommentsButton from "@/components/DeleteCommentsButton";
+import { getServerSession } from "next-auth";
 
 interface Article {
   _id: string;
@@ -61,6 +62,7 @@ export default async function Article({ params }: { params: ArticleParams }) {
   const { id } = params;
   const { article } = await getArticleById(id);
   const { comments } = await getCommentsById(id);
+  const session = await getServerSession();
 
   return (
     <div className="flex flex-col items-center py-4 ">
@@ -118,7 +120,9 @@ export default async function Article({ params }: { params: ArticleParams }) {
                       <p>{comment.content}</p>
                     </div>
 
-                    <DeleteCommentsButton id={comment._id} />
+                    {session?.user?.email && (
+                      <DeleteCommentsButton id={comment._id} />
+                    )}
                   </div>
                 ))}
             </div>
