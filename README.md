@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Blog Project
+
+Welcome to our Next.js blog project! This application allows users to read, create, edit, and delete articles. Admin users have additional privileges such as adding, editing, and deleting articles, as well as managing comments.
+
+## Features
+
+- View posted articles
+- Click on articles to view their details separately
+- Login as admin to access additional functionalities
+- Add new articles
+- Edit existing articles
+- Delete articles
+- Leave comments as an unlogged-in user
+- Delete comments (admin only)
+
+## Technologies Used
+
+- Next.js
+- MongoDB
+- [UploadThing](https://uploadthing.com/) (Third-party API for hosting images)
+- NextAuth.js (For authentication)
+
+## Environment Variables
+
+Before running the application, make sure to set up the following environment variables:
+
+- \`MONGODB_URI\`: MongoDB connection URI
+- \`UPLOADTHING_SECRET\`: Secret key for UploadThing API
+- \`UPLOADTHING_APP_ID\`: Application ID for UploadThing API
+- \`NEXTAUTH_SECRET\`: Secret key for NextAuth.js
+- \`NEXTAUTH_URL\`: URL for NextAuth.js
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   \`\`\`bash
+   git clone <repository-url>
+   \`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   \`\`\`bash
+   cd nextjs-blog
+   npm install
+   \`\`\`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Set up environment variables:
 
-## Learn More
+   Create a \`.env.local\` file in the root directory and add the following variables:
 
-To learn more about Next.js, take a look at the following resources:
+   \`\`\`
+   MONGODB_URI=<your-mongodb-uri>
+   UPLOADTHING_SECRET=<your-uploadthing-secret>
+   UPLOADTHING_APP_ID=<your-uploadthing-app-id>
+   NEXTAUTH_SECRET=<your-nextauth-secret>
+   NEXTAUTH_URL=<your-nextauth-url>
+   \`\`\`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   \`\`\`bash
+   npm run dev
+   \`\`\`
 
-## Deploy on Vercel
+5. Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To deploy the application, follow the deployment instructions for Next.js applications. Ensure that you set up environment variables in your production environment as well.

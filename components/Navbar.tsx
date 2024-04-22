@@ -37,7 +37,7 @@ export default function Navbar() {
         ) : (
           <Link href="/login">
             <button className="bg-cyan-400 p-1 text-white font-semibold rounded-md">
-              Login
+              Admin?
             </button>
           </Link>
         )}

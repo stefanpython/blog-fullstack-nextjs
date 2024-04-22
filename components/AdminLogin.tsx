@@ -27,6 +27,7 @@ export default function AdminLogin() {
       }
 
       router.replace("/");
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
