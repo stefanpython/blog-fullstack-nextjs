@@ -22,15 +22,11 @@ export default function UploadButtonPage({ setImage, image }: Props) {
       className="flex  flex-col items-center justify-start"
       key={Math.random()}
     >
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment
-         @ts-ignore */}
+      {/* @ts-ignore */}
       <UploadButton<OurFileRouter>
-        endpoint="imageUploader"
+        endpoint="someEndpoint"
         onClientUploadComplete={handleUploadComplete}
-        onUploadError={(error: Error) => {
-          // Do something with the error.
-          alert(`ERROR! ${error.message}`);
-        }}
+        onUploadError={(err) => console.log(err)}
       />
       {image.length > 0 && <p>Upload Complete!</p>}
     </main>

@@ -20,6 +20,8 @@ Welcome to our Next.js blog project! This application allows users to read, crea
 - [UploadThing](https://uploadthing.com/) (Third-party API for hosting images)
 - NextAuth.js (For authentication)
 
+![Alt Text](https://www.dropbox.com/scl/fi/1cp6cji1rxindlkmowdn3/blogNextJS.webm?rlkey=4224u7sewu6ig1f31e4imshqx&st=prwszxld&dl=0)
+
 ## Environment Variables
 
 Before running the application, make sure to set up the following environment variables:
